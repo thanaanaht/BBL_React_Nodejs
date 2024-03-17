@@ -1,46 +1,70 @@
-// LoginPage.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './LoginPage.css';
 import Manubar from "../components/Manubar";
 
+function Dashboard() {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [area, setArea] = useState('');
+  const [local, setLocal] = useState('');
+  const [level, setLevel] = useState('');
+  const [token, setToken] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginlist, setLoginlist] = useState([]);
 
-function Dashboard({ setIsAuthenticated, token, username }) {
-  
-  const resLogin = () => {
-    Axios.get('http://localhost:3001/login')
-      .then((response) => {
-        console.log(response.data);
+  useEffect(() => {
+    let isMounted = true;
 
-        const receivedToken = response.data.token;
-        // Assuming setToken is a function passed as a prop, update it accordingly
-        // setToken(receivedToken);
+    const fetchData = async () => {
+      try {
+        const response = await Axios.get('http://localhost:3003/login');
+        const { token, username, area, local, level, loginlist } = response.data;
 
-        if (receivedToken) {
-          // Correct way to update the state
-          setIsAuthenticated(true);
+        if (isMounted) {
+          setToken(token);
+          setUsername(username);
+          setArea(area);
+          setLocal(local);
+          setLevel(level);
+          setLoginlist(loginlist);
+
+          if (token) {
+            setIsAuthenticated(true);
+          }
         }
-      })
-      .catch((error) => {
+      } catch (error) {
         console.error('Error fetching login data', error);
-      });
-  };
+        // You can handle errors here, e.g., set an error state and display a message to the user
+      }
+    };
 
-  // Call resLogin when component mounts
-  // Assuming this is intended behavior, if not, adjust accordingly
-  React.useEffect(() => {
-    resLogin();
+    fetchData();
+
+    return () => {
+      isMounted = false; // Cleanup function to prevent memory leaks
+    };
   }, []);
 
   return (
     <>
+      {loginlist && loginlist.length > 0 && (
+        <div>
+          <h2>Updated Login List:</h2>
+          <ul>
+            {loginlist.map((login, index) => (
+              <li key={index}>
+                Username: {login.username}, Password: {login.password} Area: {login.area}, Local: {login.local}, Level: {login.level}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {token && (
         <>
-        <h1>ระบบสารสนเทศเพื่อการจัดทำงบประมาณ ขององค์กรปกครองส่วนท้องถิ่น</h1>
-          {/* <EditDBCar username={email} />
-          <EditDBTabien username={email} /> */}
-          <Manubar/>
-
+          <h1>ระบบสารสนเทศเพื่อการจัดทำงบประมาณ ขององค์กรปกครองส่วนท้องถิ่น</h1>
+          <Manubar />
         </>
       )}
     </>
@@ -48,29 +72,3 @@ function Dashboard({ setIsAuthenticated, token, username }) {
 }
 
 export default Dashboard;
-
-
-
-// import React from "react";
-// import Manubar from "../components/Manubar";
-
-
-
-
-
-// const Dashboard = () => {
-//   return (
-//     <div>
-//       <h1>ระบบสารสนเทศเพื่อการจัดทำงบประมาณ ขององค์กรปกครองส่วนท้องถิ่น</h1>
-//       <Manubar />
-
-
-
-
-
- 
-//     </div>
-//   );
-// };
-
-// export default Dashboard;

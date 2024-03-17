@@ -3,16 +3,13 @@ const app = express();
 const cors = require('cors');
 const Logincontrol = require('./views/Logincontrol');
 const Membercontrol = require('./views/Membercontrol');
-
+const PORT = 3003; // Corrected variable name
 
 app.use(cors());
 app.use(express.json());
 app.use(Logincontrol);
 app.use(Membercontrol);
 
-
-
-
-app.listen('3003', () => {
-    console.log('Server is running on port 3001');
+app.listen(PORT, () => { // Corrected variable name
+    console.log('Server is running on port:', PORT); // Corrected variable name
 });
