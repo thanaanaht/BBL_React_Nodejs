@@ -5,28 +5,30 @@ import Home from "./pages/Home";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
-import Dashboard from "./pages/dashboard"; // Make sure the filename is correct
-import Manubar from "./components/Manubar";
+import Dashboard from "./pages/dashboard";
 import Footer from "./components/Footer";
-
+import EditDBMember from "./pages/EditDBMember"
 import LoginPage from "./pages/LoginPage";
 import React, { useState } from "react";
+import Education from "./pages/Education";
+import Education1101 from "./pages/Education1101";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   return (
     <BrowserRouter>
-
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="Home" element={<Home />} />
-          <Route path="blogs" element={<Blogs />} />
+          <Route path="home" element={<Home />} /> {/* Corrected path */}
+          <Route path="education" element={<Education/>} />
           <Route path="contact" element={<Contact />} />
           <Route path="loginpage" element={isAuthenticated ? <Navigate to="/dashboard" /> : <LoginPage />} />
           <Route path="*" element={<NoPage />} />
-        </Route>
+          <Route path="editmember" element={<EditDBMember />} /> 
+          <Route path="education1101" element= {<Education1101 />} /> 
+        </Route> {/* Corrected closing tag */}
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />

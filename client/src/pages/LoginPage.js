@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './LoginPage.css';
 import { useNavigate } from 'react-router-dom';
-import EditDBMember from "./EditDBMember";
+
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -18,7 +18,9 @@ function LoginPage() {
 
   useEffect(() => {
     if (token && isAuthenticated) {
-      navigate('/dashboard'); // Redirect to dashboard or any authenticated route
+      navigate('/dashboard',{
+       
+      }); // Redirect to dashboard or any authenticated route
     }
   }, [token, isAuthenticated, navigate]);
 
@@ -114,7 +116,7 @@ function LoginPage() {
         </div>
       )}
 
-      {level === 'admin' && <EditDBMember />}
+     
 
       {token && (
         <div>

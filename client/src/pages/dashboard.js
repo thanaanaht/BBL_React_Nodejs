@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './LoginPage.css';
 import Manubar from "../components/Manubar";
+import EditDBMember from './EditDBMember';
 
 function Dashboard() {
   const [username, setUsername] = useState('');
@@ -47,7 +48,7 @@ function Dashboard() {
   }, []);
 
   return (
-    <>
+    <div>
       {loginlist && loginlist.length > 0 && (
         <div>
           <h2>Updated Login List:</h2>
@@ -65,9 +66,11 @@ function Dashboard() {
         <>
           <h1>ระบบสารสนเทศเพื่อการจัดทำงบประมาณ ขององค์กรปกครองส่วนท้องถิ่น</h1>
           <Manubar />
+          <h1>ลงทะเบียนหน่วยงาน</h1>
+          <EditDBMember />
         </>
       )}
-    </>
+    </div>
   );
 }
 
