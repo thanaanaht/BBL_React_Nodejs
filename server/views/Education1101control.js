@@ -27,9 +27,9 @@ Education1101control.use((req, res, next) => {
 // Middleware to parse JSON request bodies
 Education1101control.use(bodyParser.json());
 
-Education1101control.delete('/Memberdelete/:id', (req,res) => {
+Education1101control.delete('/education1101/:id', (req,res) => {
     const id = req.params.id;
-    db.query("DELETE FROM member WHERE id = ?", id, (err, result) =>{
+    db.query("DELETE FROM education1101 WHERE id = ?", id, (err, result) =>{
         if (err) {
             console.log(err);
         } else {
@@ -37,6 +37,26 @@ Education1101control.delete('/Memberdelete/:id', (req,res) => {
         }
     })
 })
+
+Education1101control.put('/education1101/update', (req, res) => {
+    const id = req.body.id;
+    const newStatus = req.body.STATUS; // Assuming you pass the new status in the request body
+
+    db.query("UPDATE education1101 SET STATUS = ? WHERE id = ?", [newStatus, id], (err, result) => {
+        if (err) {
+            console.error("Error updating status:", err);
+            res.status(500).json({ error: "An error occurred while updating status" });
+        } else {
+            console.log("Status updated successfully");
+            res.status(200).json({ message: "Status updated successfully" });
+
+        }
+        console.log(newStatus);
+        console.log(id);
+    });
+});
+
+
 
 Education1101control.get('/education1101', (req, res) => {
     req.dbConnection.query("SELECT * FROM education1101", (err, result) => {
@@ -64,6 +84,8 @@ function dbQueryPromise(sql, values) {
         });
     });
 }
+
+
 
 // Route to create a new member
 Education1101control.post('/education1101', async (req, res) => {

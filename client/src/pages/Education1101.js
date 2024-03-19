@@ -21,7 +21,7 @@ function Education1101() {
   const [K1_Tool_Number, setK1_Tool_Number] = useState(0);
   const [K1_Activity_Number, setK1_Activity_Number] = useState(0);
   const [K1_Uniform_Number, setK1_Uniform_Number] = useState(0);
-  const [STATUS, setSTATUS] = useState('PRE_APPROVE');
+  const [STATUS, setSTATUS] = useState('');
   const [dataList, setDataList] = useState([]);
 
   useEffect(() => {
@@ -64,14 +64,63 @@ function Education1101() {
     })
   }
 
+  const editData = (id) => {
+    const itemToEdit = dataList.find(item => item.id === id);
+    if (itemToEdit) {
+      setTerm(itemToEdit.Term);
+      setYear(itemToEdit.Year);
+      setK1_Book_Number(itemToEdit.K1_Book_Number);
+      setK1_Book_Fee(itemToEdit.K1_Book_Fee);
+      setK1_Tuition_Number(itemToEdit.K1_Tuition_Number);
+      setK1_Tuition_Fee(itemToEdit.K1_Tuition_Fee);
+      setK1_Tool_Number(itemToEdit.K1_Tool_Number);
+      setK1_Tool_Fee(itemToEdit.K1_Tool_Fee);
+      setK1_Uniform_Number(itemToEdit.K1_Uniform_Number);
+      setK1_Uniform_Fee(itemToEdit.K1_Uniform_Fee);
+      setK1_Activity_Number(itemToEdit.K1_Activity_Number);
+      setK1_Activity_Fee(itemToEdit.K1_Activity_Fee);
+      setSTATUS(itemToEdit.STATUS);
+    }
+  };
+
+  const approveStatus = (id) => {
+    Axios.put(`http://localhost:3003/education1101/update`, { STATUS: 'APPROVED', id: id }).then((response) => {
+
+      setDataList(
+        dataList.map((val) => {
+          return val.id === id ? {
+            id: val.id,
+            STATUS: 'APPROVED'
+          } : val; 
+        })
+      );
+    });
+  };
+  
+  
+
+
+  const rejectStatus = (id) => {
+    Axios.put(`http://localhost:3003/education1101/update`, { STATUS: 'REJECTED', id: id }).then((response) => {
+
+    setDataList(
+      dataList.map((val) => {
+        return val.id === id ? {
+          id: val.id,
+          STATUS: 'REJECTED'
+        } : val; 
+      })
+    );
+  });
+};
+
+
   const getData = () => {
     Axios.get('http://localhost:3003/education1101').then((response) => {
       setDataList(response.data);
     });
   };
-  // [{"id":1,"Username":"local01","Term":"1","Year":2566,"Location_user":"local01","AREA":"area01",
-  // "K1_Tuition_Fee":99.5,"K1_Book_Fee":99.5,"K1_Tool_Fee":99.5,"K1_Uniform_Fee":99.5,"K1_Activity_Fee":99.5,"K1_Tuition_Number":100,
-  // "K1_Book_Number":100,"K1_Tool_Number":100,"K1_Uniform_Number":100,"K1_Activity_Number":100,"STATUS":"pre-approve"}]
+
   const addData = () => {
     Axios.post('http://localhost:3003/education1101', {
       Username: Username,
@@ -287,11 +336,12 @@ function Education1101() {
                 ค่าอุปกรณ์ต่อหน่วย: {val.K1_Tool_Fee} จำนวนนักเรียน: {val.K1_Tool_Number}
                 ค่าจัดการเรียนการสอนต่อหน่วย: {val.K1_Tuition_Fee} จำนวนนักเรียน: {val.K1_Tuition_Number}
                 Status: {val.STATUS}</p>
-                {/* // [{"id":1,"Username":"local01","Term":"1","Year":2566,"Location_user":"local01","AREA":"area01",
-  // "K1_Tuition_Fee":99.5,"K1_Book_Fee":99.5,"K1_Tool_Fee":99.5,"K1_Uniform_Fee":99.5,"K1_Activity_Fee":99.5,"K1_Tuition_Number":100,
-  // "K1_Book_Number":100,"K1_Tool_Number":100,"K1_Uniform_Number":100,"K1_Activity_Number":100,"STATUS":"pre-approve"}] */}
+
                 <button className="btn btn-danger"onClick={()=> { deleteData(val.id)}}>Delete</button>
-               
+                <button className="btn btn-danger"onClick={()=> { editData(val.id)}}>Edit</button>
+                <button className="btn btn-danger"onClick={()=> { approveStatus(val.id)}}>APPORVE</button>
+                <button className="btn btn-danger"onClick={()=> { rejectStatus(val.id)}}>REJECT</button>
+                
               </div>
             </div>
           )
@@ -299,6 +349,6 @@ function Education1101() {
       </div>
     </div>
   );
-}
 
+};
 export default Education1101;
