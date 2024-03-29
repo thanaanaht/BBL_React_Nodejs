@@ -3,9 +3,11 @@ import Axios from 'axios';
 import './LoginPage.css';
 import Manubar from "../components/Manubar";
 import EditDBMember from './EditDBMember';
+import { useParams } from 'react-router-dom'; // Import useParams
 
 function Dashboard() {
-  const [username, setUsername] = useState('');
+
+  
   const [password, setPassword] = useState('');
   const [area, setArea] = useState('');
   const [local, setLocal] = useState('');
@@ -14,17 +16,17 @@ function Dashboard() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [loginlist, setLoginlist] = useState([]);
 
+  const { username } = useParams();
   useEffect(() => {
     let isMounted = true;
 
     const fetchData = async () => {
       try {
-        const response = await Axios.get('http://localhost:3003/login');
+        const response = await Axios.get('http://localhost:3033/login');
         const { token, username, area, local, level, loginlist } = response.data;
 
         if (isMounted) {
           setToken(token);
-          setUsername(username);
           setArea(area);
           setLocal(local);
           setLevel(level);
@@ -49,6 +51,8 @@ function Dashboard() {
 
   return (
     <div>
+      <h1>Welcome, {username}!</h1>
+
       {loginlist && loginlist.length > 0 && (
         <div>
           <h2>Updated Login List:</h2>

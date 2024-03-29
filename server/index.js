@@ -4,7 +4,7 @@ const cors = require('cors');
 const Logincontrol = require('./views/Logincontrol');
 const Membercontrol = require('./views/Membercontrol');
 const Education1101 = require('./views/Education1101control')
-const PORT = 3003; // Corrected variable name
+const PORT = 3133; // Corrected variable name
 
 app.use(cors());
 app.use(express.json());

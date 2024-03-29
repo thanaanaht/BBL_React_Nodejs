@@ -24,7 +24,7 @@ function App() {
           <Route path="home" element={<Home />} /> {/* Corrected path */}
           <Route path="education" element={<Education/>} />
           <Route path="contact" element={<Contact />} />
-          <Route path="loginpage" element={isAuthenticated ? <Navigate to="/dashboard" /> : <LoginPage />} />
+          <Route path="loginpage" element={isAuthenticated ? <Navigate to="/dashboard/${username}'" /> : <LoginPage />} />
           <Route path="*" element={<NoPage />} />
           <Route path="editmember" element={<EditDBMember />} /> 
           <Route path="education1101" element= {<Education1101 />} /> 

@@ -11,7 +11,7 @@ function EditDBMember() {
   const [MemberList, setMemberList] = useState([]);
 
   const addMember = () => {
-    Axios.post('http://localhost:3003/membercreate', {
+    Axios.post('http://localhost:3133/membercreate', {
       username, password, area, local, level,
     }).then(() => {
       setMemberList([

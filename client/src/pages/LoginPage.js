@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import './LoginPage.css';
 import { useNavigate } from 'react-router-dom';
-
+import Dashboard from './dashboard';
 
 function LoginPage() {
   const [username, setUsername] = useState('');
@@ -18,14 +18,14 @@ function LoginPage() {
 
   useEffect(() => {
     if (token && isAuthenticated) {
-      navigate('/dashboard',{
+      navigate('/dashboard/${username}',{
        
       }); // Redirect to dashboard or any authenticated route
     }
   }, [token, isAuthenticated, navigate]);
 
   const addLogin = () => {
-    Axios.post('http://localhost:3003/login', {
+    Axios.post('http://localhost:3133/login', {
       username,
       password,
     }).then(() => {
@@ -44,7 +44,7 @@ function LoginPage() {
   };
 
   const resLogin = () => {
-    Axios.get('http://localhost:3003/login')
+    Axios.get('http://localhost:3133/login')
       .then(response => {
         console.log(response.data);
 
@@ -116,7 +116,6 @@ function LoginPage() {
         </div>
       )}
 
-     
 
       {token && (
         <div>
