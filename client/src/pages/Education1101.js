@@ -23,13 +23,13 @@ function Education1101() {
   const [K1_Uniform_Number, setK1_Uniform_Number] = useState(0);
   const [STATUS, setSTATUS] = useState('');
   const [dataList, setDataList] = useState([]);
-
+  const PORT = 60352;
   useEffect(() => {
     resLogin();
   }, []);
 
   const resLogin = () => {
-    Axios.get('http://localhost:3033/login')
+    Axios.get(`http://localhost:${PORT}/login`)
       .then(response => {
         console.log(response.data);
 
@@ -55,7 +55,7 @@ function Education1101() {
   };
 
   const deleteData = (id) => {
-    Axios.delete(`http://localhost:3033/education1101/${id}`).then((response) => {
+    Axios.delete(`http://localhost:${PORT}/education1101/${id}`).then((response) => {
       setDataList(
         dataList.filter((val => {
           return val.id !== id;
@@ -84,7 +84,7 @@ function Education1101() {
   };
 
   const approveStatus = (id) => {
-    Axios.put(`http://localhost:3133/education1101/update`, { STATUS: 'APPROVED', id: id }).then((response) => {
+    Axios.put(`http://localhost:${PORT}/education1101/update`, { STATUS: 'APPROVED', id: id }).then((response) => {
 
       setDataList(
         dataList.map((val) => {
@@ -101,7 +101,7 @@ function Education1101() {
 
 
   const rejectStatus = (id) => {
-    Axios.put(`http://localhost:3133/education1101/update`, { STATUS: 'REJECTED', id: id }).then((response) => {
+    Axios.put(`http://localhost:${PORT}/education1101/update`, { STATUS: 'REJECTED', id: id }).then((response) => {
 
     setDataList(
       dataList.map((val) => {
@@ -116,13 +116,13 @@ function Education1101() {
 
 
   const getData = () => {
-    Axios.get('http://localhost:3133/education1101').then((response) => {
+    Axios.get(`http://localhost:${PORT}/education1101`).then((response) => {
       setDataList(response.data);
     });
   };
 
   const addData = () => {
-    Axios.post('http://localhost:3133/education1101', {
+    Axios.post(`http://localhost:${PORT}/education1101`, {
       Username: Username,
       Term: Term,
       Year: Year,

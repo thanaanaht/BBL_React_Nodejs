@@ -17,12 +17,13 @@ function Dashboard() {
   const [loginlist, setLoginlist] = useState([]);
 
   const { username } = useParams();
+  const PORT = 60352;
   useEffect(() => {
     let isMounted = true;
 
     const fetchData = async () => {
       try {
-        const response = await Axios.get('http://localhost:3033/login');
+        const response = await Axios.get(`http://localhost:${PORT}/login`);
         const { token, username, area, local, level, loginlist } = response.data;
 
         if (isMounted) {

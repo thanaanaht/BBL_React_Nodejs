@@ -15,7 +15,7 @@ function LoginPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Moved inside the component
 
   const navigate = useNavigate(); // Moved inside the component
-
+  const PORT = 60352;
   useEffect(() => {
     if (token && isAuthenticated) {
       navigate('/dashboard/${username}',{
@@ -25,7 +25,7 @@ function LoginPage() {
   }, [token, isAuthenticated, navigate]);
 
   const addLogin = () => {
-    Axios.post('http://localhost:3133/login', {
+    Axios.post(`http://localhost:${PORT}/login`, {
       username,
       password,
     }).then(() => {
@@ -44,7 +44,7 @@ function LoginPage() {
   };
 
   const resLogin = () => {
-    Axios.get('http://localhost:3133/login')
+    Axios.get(`http://localhost:${PORT}/login`)
       .then(response => {
         console.log(response.data);
 

@@ -9,9 +9,9 @@ function EditDBMember() {
   const [level, setLevel] = useState('Local');
   
   const [MemberList, setMemberList] = useState([]);
-
+  const PORT = 60352;
   const addMember = () => {
-    Axios.post('http://localhost:3133/membercreate', {
+    Axios.post(`http://localhost:${PORT}/membercreate`, {
       username, password, area, local, level,
     }).then(() => {
       setMemberList([
