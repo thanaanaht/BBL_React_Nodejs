@@ -17,7 +17,7 @@ function Dashboard() {
   const [loginlist, setLoginlist] = useState([]);
 
   const { username } = useParams();
-  const PORT = 60352;
+  const PORT = 3300;
   useEffect(() => {
     let isMounted = true;
 
@@ -52,29 +52,29 @@ function Dashboard() {
 
   return (
     <div>
-      <h1>Welcome, {username}!</h1>
+     
 
-      {loginlist && loginlist.length > 0 && (
-        <div>
-          <h2>Updated Login List:</h2>
-          <ul>
-            {loginlist.map((login, index) => (
-              <li key={index}>
-                Username: {login.username}, Password: {login.password} Area: {login.area}, Local: {login.local}, Level: {login.level}
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+        {loginlist && loginlist.length > 0 && (
+          <div>
+            <h2>Updated Login List:</h2>
+            <ul>
+              {loginlist.map((login, index) => (
+                <li key={index}>
+                  Username: {login.username}, Password: {login.password} Area: {login.area}, Local: {login.local}, Level: {login.level}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
-      {token && (
-        <>
-          <h1>ระบบสารสนเทศเพื่อการจัดทำงบประมาณ ขององค์กรปกครองส่วนท้องถิ่น</h1>
-          <Manubar />
-          <h1>ลงทะเบียนหน่วยงาน</h1>
-          <EditDBMember />
-        </>
-      )}
+        {token && (
+          <>
+            <Manubar />
+          </>
+        )}
+      <div className={'titleContainer'}>
+        <div>ลงทะเบียนเข้าใช้งาน</div>
+      </div>
     </div>
   );
 }

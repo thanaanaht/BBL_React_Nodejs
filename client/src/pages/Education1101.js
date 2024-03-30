@@ -23,7 +23,7 @@ function Education1101() {
   const [K1_Uniform_Number, setK1_Uniform_Number] = useState(0);
   const [STATUS, setSTATUS] = useState('');
   const [dataList, setDataList] = useState([]);
-  const PORT = 60352;
+  const PORT = 3300;
   useEffect(() => {
     resLogin();
   }, []);
