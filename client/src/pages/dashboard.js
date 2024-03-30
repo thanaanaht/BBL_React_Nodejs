@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import './LoginPage.css';
+import './dashboard.css';
 import Manubar from "../components/Manubar";
 import EditDBMember from './EditDBMember';
 import { useParams } from 'react-router-dom'; // Import useParams
 
-function Dashboard() {
+function redirectToEducation() {
+  window.location.href = "/education";
+}
 
-  
+function Dashboard() {
   const [password, setPassword] = useState('');
   const [area, setArea] = useState('');
   const [local, setLocal] = useState('');
@@ -52,8 +54,7 @@ function Dashboard() {
 
   return (
     <div>
-     
-
+      {/* 
         {loginlist && loginlist.length > 0 && (
           <div>
             <h2>Updated Login List:</h2>
@@ -65,15 +66,33 @@ function Dashboard() {
               ))}
             </ul>
           </div>
-        )}
+        )} */}
 
-        {token && (
-          <>
-            <Manubar />
-          </>
-        )}
+      {token && (
+        <>
+          <Manubar />
+        </>
+      )}
       <div className={'titleContainer'}>
-        <div>ลงทะเบียนเข้าใช้งาน</div>
+        <br/>
+        <div>กรุณาเลือกหัวข้อการจัดการงบประมาณ</div>
+        <br/>
+      </div>
+
+      <div className="bottom-box" onClick={redirectToEducation}>
+        <p>การจัดบริการสาธารณะด้านการศึกษา</p>
+      </div>
+      <div className="bottom-box">
+        <p>การจัดบริการสาธารณะด้านโครงสร้างพื้นฐาน</p>
+      </div>
+      <div className="bottom-box">
+        <p>การจัดบริการสาธารณะด้านสังคม</p>
+      </div>
+      <div className="bottom-box">
+        <p>การจัดบริการด้านสิ่งแวดล้อม</p>
+      </div>
+      <div className="bottom-box">
+        <p>การจัดบริการสาธารณะด้านการบริหารจัดการ</p>
       </div>
     </div>
   );
