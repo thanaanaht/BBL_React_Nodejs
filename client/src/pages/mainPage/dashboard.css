@@ -1,0 +1,18 @@
+.titleContainer {
+  text-align: center; /* Center the text */
+ 
+}
+
+.bottom-bar {
+  background-color: #e7e7e7; /* Background color */
+  border-radius: 8px; /* Rounded corners */
+  padding: 20px; /* Padding inside the box */
+  margin: 10px auto; /* Margin for spacing between boxes */
+  width: 80%; /* Set width to 80% of the container */
+  cursor: pointer; /* Show pointer on hover to indicate it's clickable */
+  transition: background-color 0.3s; /* Smooth transition for background color change */
+}
+
+.bottom-bar:hover {
+  background-color: #dcdcdc; /* Darker background color on hover */
+}

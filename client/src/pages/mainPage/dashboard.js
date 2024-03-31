@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
+
 import './dashboard.css';
-import Manubar from "../components/Manubar";
-import EditDBMember from './EditDBMember';
+import Manubar from "../../components/Manubar";
 import { useParams } from 'react-router-dom'; // Import useParams
 
 function redirectToEducation() {
@@ -76,22 +76,21 @@ function Dashboard() {
       <div className={'titleContainer'}>
         <br/>
         <div>กรุณาเลือกหัวข้อการจัดการงบประมาณ</div>
-        <br/>
       </div>
 
-      <div className="bottom-box" onClick={redirectToEducation}>
+      <div className="bottom-bar" onClick={redirectToEducation}>
         <p>การจัดบริการสาธารณะด้านการศึกษา</p>
       </div>
-      <div className="bottom-box">
+      <div className="bottom-bar">
         <p>การจัดบริการสาธารณะด้านโครงสร้างพื้นฐาน</p>
       </div>
-      <div className="bottom-box">
+      <div className="bottom-bar">
         <p>การจัดบริการสาธารณะด้านสังคม</p>
       </div>
-      <div className="bottom-box">
+      <div className="bottom-bar">
         <p>การจัดบริการด้านสิ่งแวดล้อม</p>
       </div>
-      <div className="bottom-box">
+      <div className="bottom-bar">
         <p>การจัดบริการสาธารณะด้านการบริหารจัดการ</p>
       </div>
     </div>

@@ -1,17 +1,20 @@
 import ReactDOM from "react-dom";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./pages/Layout";
-import Home from "./pages/Home";
-import Blogs from "./pages/Blogs";
-import Contact from "./pages/Contact";
-import NoPage from "./pages/NoPage";
-import Dashboard from "./pages/dashboard";
-import Footer from "./components/Footer";
-import EditDBMember from "./pages/EditDBMember"
-import LoginPage from "./pages/LoginPage";
 import React, { useState } from "react";
-import Education from "./pages/Education";
-import Education1101 from "./pages/Education1101";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import Layout from "./pages/mainPage/Layout";
+import Home from "./pages/mainPage/Home";
+import Blogs from "./pages/mainPage/Blogs";
+import Contact from "./pages/mainPage/Contact";
+import NoPage from "./pages/mainPage/NoPage";
+import Dashboard from "./pages/mainPage/dashboard";
+import Footer from "./components/Footer";
+import EditDBMember from "./pages/mainPage/EditDBMember"
+import LoginPage from "./pages/mainPage/LoginPage";
+import Education from "./pages/educationPages/Education";
+import Education1101 from "./pages/educationPages/1101/educationForm-1101";
+import Yearselect1101 from "./pages/educationPages/1101/yearSelect-1101";
+import Milk1101 from "./pages/educationPages/1101/milk-1101";
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -27,7 +30,9 @@ function App() {
           <Route path="loginpage" element={isAuthenticated ? <Navigate to="/dashboard/${username}'" /> : <LoginPage />} />
           <Route path="*" element={<NoPage />} />
           <Route path="editmember" element={<EditDBMember />} /> 
-          <Route path="education1101" element= {<Education1101 />} /> 
+          <Route path="milk1101" element= {<Milk1101 />} /> 
+          <Route path="yearselect1101" element= {<Yearselect1101 />} /> 
+
         </Route> {/* Corrected closing tag */}
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>

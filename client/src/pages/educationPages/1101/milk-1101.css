@@ -1,0 +1,172 @@
+/* milk-1101.css */
+
+.titleContainer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 40px;
+}
+.textSubject {
+    text-align: center;
+    max-width: 80%;
+    display: flex;
+    font-size: 25px;
+    padding-left: 10%;
+}
+
+.containerBox {
+    margin: 10px;
+    font-size: 20px;
+    padding: 20px;
+    justify-content: space-between; 
+    text-align: center;
+}
+.subject-row {
+    background-color: #ff2525; 
+    display: flex;
+    height: 100px;
+    align-items: center;
+ 
+}
+.containerBox div {
+    margin-bottom: 10px;
+}
+.getDataBox {
+    background-color: #00ff95; 
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: flex-end; 
+    
+  }
+  
+
+.inputBox {
+    display: flex;
+}
+
+.inputBox input {
+
+    padding: 20px;
+    border: 0px solid #ffffff;
+    border-radius: 5px;
+}
+
+.submitBox {
+    justify-content: flex-end; 
+    text-align: center;
+    font-size: 18px;
+    background-color: dodgerblue;
+    color: white;
+    padding: 5px 5px;
+    border-radius: 35px;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 20%;
+
+}
+
+.submitBox:hover {
+    background-color: rgb(129, 129, 129);
+}
+
+
+.row {
+    flex-direction: row;
+    display: flex;
+}
+.inputContainer > div {
+    display: block;
+    margin-bottom: 10px; /* Optional: Adds some spacing between each label-input pair */
+}
+.inputContainer  {
+    display: flex;
+    margin-bottom: 10px; /* Optional: Adds some spacing between each label-input pair */
+}
+
+.form-label {
+    padding: 10px;
+    margin: 10px;
+}
+
+
+
+.row-column {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff; 
+  justify-content: flex-end; 
+
+}
+/* 
+.selected-row {
+  background-color: #ff2525; 
+  display: flex;
+  height: 100px;
+  align-items: center;
+  justify-content: flex-end; 
+  
+}
+
+
+.selected-box {
+  display: flex;
+
+  
+  align-items: center; 
+  justify-content: flex-end; 
+}
+.one-row {
+  margin-left: 100px;
+  margin-right: 100px;
+  display: flex;
+
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+*/
+.title-sub {
+  display: flex;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 20px;
+
+}
+
+.end-box {
+    background-color: #ffffff;
+    border-radius: 40px;
+    height: 100px;
+    width: auto;
+    padding: 10px;
+    /* padding: 20px; */
+    /* margin: 10px; */
+    text-align: center;
+    box-shadow: 1px 1px 8px rgb(0, 0, 0);
+    color: rgb(25, 0, 255);
+    transition: transform 0.3s, color white 0.3s ease; /* Combined transition for transform and color */
+    font-size: 20px;
+    justify-content: flex-end;
+  }
+
+  .end-box:hover {
+    background-color: rgb(0, 68, 255);
+    color:white;
+}
+
+.one-row {
+
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; 
+    justify-content: center; 
+    max-width: 100%;
+    /* flex-direction: row; */
+    /* justify-content: space-around;  */
+  }
+  
+  
