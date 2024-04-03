@@ -1,12 +1,59 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
+import Axios from 'axios';
 import "./Education.css";
 import Manubar from "../../components/Manubar";
 
-const redirectToyearselect1101 = () => {
-  window.location.href = "/yearselect1101";
+const redirectToyearselect1103 = () => {
+  window.location.href = "/yearselect1103";
 };
 
-const Education = () => {
+
+
+function Education() {
+  const PORT = 3300;
+  
+  const [password, setPassword] = useState('');
+  const [area, setArea] = useState('');
+  const [local, setLocal] = useState('');
+  const [level, setLevel] = useState('');
+  const [token, setToken] = useState('');
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loginlist, setLoginlist] = useState([]);
+
+
+
+    useEffect(() => {
+      let isMounted = true;
+
+      const fetchData = async () => {
+        try {
+          const response = await Axios.get(`http://localhost:${PORT}/login`);
+          const { token, username, area, local, level, loginlist } = response.data;
+
+          if (isMounted) {
+            setToken(token);
+            setArea(area);
+            setLocal(local);
+            setLevel(level);
+            setLoginlist(loginlist);
+
+            if (token) {
+              setIsAuthenticated(true);
+            }
+          }
+        } catch (error) {
+          console.error('Error fetching login data', error);
+          // You can handle errors here, e.g., set an error state and display a message to the user
+        }
+      };
+
+      fetchData();
+
+      return () => {
+        isMounted = false; // Cleanup function to prevent memory leaks
+      };
+    }, []);
+
   return (
     <div>
       <Manubar/>
@@ -29,7 +76,7 @@ const Education = () => {
                 <p>หัวหน้าเขตอนุมัติ</p>
               </div>
 
-              <div className="edu-box" onClick={redirectToyearselect1101 } > 
+              <div className="edu-box"  > 
                 <p>กรอกฟอร์มคำขอ</p>
               </div>
         </div>
@@ -68,7 +115,7 @@ const Education = () => {
               <div className="edu-box" >
                 <p>หัวหน้าเขตอนุมัติ</p>
               </div>
-              <div className="edu-box" >
+              <div className="edu-box" onClick={redirectToyearselect1103 } >
                 <p>กรอกฟอร์มคำขอ</p>
               </div>
         </div>

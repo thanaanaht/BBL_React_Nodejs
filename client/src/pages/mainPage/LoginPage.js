@@ -136,7 +136,9 @@ function LoginPage() {
       <div>ลงทะเบียนเข้าใช้งาน</div>
     </div>
     <br />
+    
     <div className={'inputContainer'}>
+    <label>บัญชีผู้ใช้</label>
       <input
         value={username}
         placeholder="Enter your username here"
@@ -147,6 +149,7 @@ function LoginPage() {
     </div>
     <br />
     <div className={'inputContainer'}>
+      <label>รหัสผ่าน</label>
       <input
         type="password" 
         value={password}

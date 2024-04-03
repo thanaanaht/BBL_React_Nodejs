@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import './milk-1101.css';
+import './earlyChildhood-1103.css';
 
 const redirectTomilk1101lastyear = () => {
-    window.location.href = "/milk1101";
+    window.location.href = "/";
 };
 
-const redirectTomilk1101 = () => {
-    window.location.href = "/milk1101";
+const redirectToFoundationSchool1103 = () => {
+    window.location.href = "/Education";
 };
 
-const Milk1101 = () => {
+const FoundationSchool1103 = () => {
     const [centerName, setCenterName] = useState("");
     const [studentCount, setStudentCount] = useState("");
     const [unitPrice, setUnitPrice] = useState("");
@@ -27,7 +27,8 @@ const Milk1101 = () => {
 
         <div className="one-row">
             <div className="title-sub">
-                รายการอาหารเสริม (นม) ระดับปฐมวัย    
+                 4.สถานศึกษาสังกัดกรมสามัญศึกษา (เดิม) <br/>
+                 (โรงเรียนศึกษาสงเคราะห์, โรงเรียนศึกษาพิเศษ)
             </div>
             <div className="row-column">
                 <div className="end-box" onClick={redirectTomilk1101lastyear}>
@@ -38,39 +39,43 @@ const Milk1101 = () => {
         
         <div className="one-row">
 
+                
+                
+            <div className="one-row">
                 <div className="containerBox">
-                    <label className="form-label">ราคาต่อหน่วยที่ขอรับการจัดสรร (บาท)</label>
+                    <label className="form-label">ชื่อศูนย์</label>
                     <input
                         value={centerName}
                         placeholder="Enter here"
                         onChange={(ev) => setCenterName(ev.target.value)}
-                        className={'inputBox'}
+                        className="inputBox"
                     />
                 </div>
                 <div className="containerBox">
-                    <label className="form-label">ราคาต่อหน่วยที่ขอรับการจัดสรร (บาท)</label>
+                    <label className="form-label">จำนวนนักเรียน</label>
                     <input
-                        value={centerName}
+                        value={studentCount}
                         placeholder="Enter here"
-                        onChange={(ev) => setCenterName(ev.target.value)}
-                        className={'inputBox'}
+                        onChange={(ev) => setStudentCount(ev.target.value)}
+                        className="inputBox"
                     />
                 </div>
                 <div className="containerBox">
-                    <label className="form-label">ราคาต่อหน่วยที่ขอรับการจัดสรร (บาท)</label>
+                    <label className="form-label">ราคาต่อหน่วย (บาท)</label>
                     <input
-                        value={centerName}
+                        value={unitPrice}
                         placeholder="Enter here"
-                        onChange={(ev) => setCenterName(ev.target.value)}
-                        className={'inputBox'}
+                        onChange={(ev) => setUnitPrice(ev.target.value)}
+                        className="inputBox"
                     />
                 </div>
+            </div>
        
         </div>
         
 
 
-        <div className="submitBox" onClick={redirectTomilk1101}>
+        <div className="submitBox" onClick={redirectToFoundationSchool1103}>
             <p>ถัดไป</p>
         </div>
 
@@ -82,4 +87,4 @@ const Milk1101 = () => {
 
 
 
-export default Milk1101;
+export default FoundationSchool1103;
